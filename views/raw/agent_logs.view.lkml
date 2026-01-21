@@ -1,5 +1,6 @@
 view: agent_logs {
-  sql_table_name: `gemini-looker-demo-dataset.agent_analytics.agent_logs` ;;
+  sql_table_name: `gemini-looker-demo-dataset.agent_analytics.agent_logs` ;; # copied table, for dev purposes
+  # sql_table_name: `agentic-cloud-demo.accelerate_demo_eu.manufacturing_agent_logs` ;; # new table, for demo purposes
   fields_hidden_by_default: yes
 
   dimension: agent {
