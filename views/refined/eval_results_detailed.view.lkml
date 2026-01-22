@@ -4,7 +4,7 @@ view: +eval_results_detailed {
   fields_hidden_by_default: yes
 
   dimension: tools_json {
-    hidden: no
+    hidden: yes
     type: number
     sql: ARRAY_LENGTH(JSON_QUERY_ARRAY(${predicted_trajectory})) ;;
   }
@@ -17,7 +17,7 @@ view: +eval_results_detailed {
   }
 
   measure: average_completeness {
-    hidden: no
+    hidden: yes
     type: average
     sql: ${completeness_score} ;;
     value_format_name: decimal_3

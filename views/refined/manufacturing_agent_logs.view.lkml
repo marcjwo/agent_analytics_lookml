@@ -4,13 +4,13 @@ view: +manufacturing_agent_logs {
   fields_hidden_by_default: yes
 
   dimension: primary_key {
-    hidden: no
+    hidden: yes
     primary_key: yes
     sql: FARM_FINGERPRINT(CONCAT(${timestamp_raw},${user_id})) ;;
   }
 
   dimension: summary {
-    hidden: no
+    hidden: yes
     sql: JSON_VALUE(${content}, '$.response') ;;
   }
 
@@ -27,7 +27,7 @@ view: +manufacturing_agent_logs {
   }
 
   dimension: text_response {
-    hidden: no
+    hidden: yes
     type: string
     sql: TRIM(REGEXP_EXTRACT(${content}, r'text:\s*(.*?)\s*\|'), "'");;
   }
@@ -39,7 +39,7 @@ view: +manufacturing_agent_logs {
   # }
 
   dimension: has_error {
-    hidden: no
+    hidden: yes
     type: yesno
     sql: ${event_type} = 'TOOL_ERROR' OR JSON_VALUE(${content}, '$.result.status') = 'ERROR' OR JSON_VALUE(${content}, '$.result.error_details') IS NOT NULL ;;
   }
@@ -51,7 +51,7 @@ view: +manufacturing_agent_logs {
   # }
 
   dimension: prompt_token {
-    hidden: no
+    hidden: yes
     type: number
     sql: LAX_INT64(${content}.usage.prompt) ;;
   }
@@ -63,19 +63,19 @@ view: +manufacturing_agent_logs {
   # }
 
   dimension: candidate_token {
-    hidden: no
+    hidden: yes
     type: number
-    sql: LAX_INT64(${content}.usage.candidate) ;;
+    sql: CASE WHEN LAX_INT64(${content}.usage.candidate) IS NULL THEN 0 ELSE LAX_INT64(${content}.usage.candidate) END ;;
   }
 
   dimension: completion_token {
-    hidden: no
+    hidden: yes
     type: number
     sql: LAX_INT64(${content}.usage.completion) ;;
   }
 
   dimension: total_token {
-    hidden: no
+    hidden: yes
     type: number
     sql: SAFE_ADD(${prompt_token},${candidate_token});;
   }
@@ -100,66 +100,67 @@ view: +manufacturing_agent_logs {
   # }
 
   measure: distinct_tool_count {
+    hidden: no
     group_label: "Tools"
     label: "Unique tools"
-    hidden: no
     type: count_distinct
     sql: ${tool_name} ;;
     # filters: [event_type: "TOOL_COMPLETED"]
   }
 
   measure: tool_count {
+    hidden: no
     group_label: "Tools"
     label: "Finished tool runs"
-    hidden: no
     type: count
     filters: [event_type: "TOOL_COMPLETED"]
   }
 
   measure: error_count  {
+    hidden: no
     group_label: "Tools"
     label: "Failed tool runs"
-    hidden: no
     type: count
     filters: [has_error: "yes"]
   }
 
   measure: failure_rate {
-    group_label: "Tools"
     hidden: no
+    group_label: "Tools"
+    label: "Tool Failure Rate"
     value_format_name: percent_2
     type: number
     sql: SAFE_DIVIDE(${error_count},${tool_count}) ;;
   }
 
   measure: sum_of_prompt_token {
+    hidden: no
     label: "Total prompt token"
     group_label: "Token"
-    hidden: no
     type: sum
     sql: ${prompt_token} ;;
   }
 
   measure: sum_of_all_token{
+    hidden: no
     label: "Total token"
     group_label: "Token"
-    hidden: no
     type: number
     sql: sum(${total_token}) ;;
   }
 
   measure: sum_of_candidate_token {
+    hidden: no
     label: "Total candidate token"
     group_label: "Token"
-    hidden: no
     type: sum
     sql: ${candidate_token} ;;
   }
 
   measure: sum_of_completion_token {
+    hidden: no
     label: "Total completion token"
     group_label: "Token"
-    hidden: no
     type: sum
     sql: ${completion_token} ;;
   }
@@ -177,11 +178,64 @@ view: +manufacturing_agent_logs {
   }
 
   measure: average_latency {
+    hidden: no
     group_label: "Latency"
     label: "Average latency in ms"
-    hidden: no
     value_format_name: decimal_2
     type: average
     sql: ${latency_ms} ;;
   }
+
+  dimension: is_user_turn {
+    hidden: yes
+    type: yesno
+    sql: ${event_type} = 'USER_MESSAGE_RECEIVED';;
+  }
+
+  measure: user_turns_count {
+    hidden: no
+    type: sum
+    sql: CASE WHEN ${is_user_turn} THEN 1 ELSE 0 END ;;
+  }
+
+  measure: average_user_turns {
+    hidden: no
+    type: number
+    sql: AVG(${user_turns_count}) ;;
+  }
+
+  # dimension_group: duration {
+  #   hidden: no
+  #   type: duration
+  #   timeframes: [second]
+  #   sql_start: MIN(${timestamp_raw}) ;;
+  #   sql_end: MAX(${timestamp_raw}) ;;
+  # }
+
+  measure: min_timestamp {
+    hidden: no
+    type: date_time
+    sql: min(${timestamp_raw}) ;;
+  }
+
+  measure: max_timestamp {
+    hidden: no
+    type: date_time
+    sql: max(${timestamp_raw}) ;;
+  }
+
+  measure: session_duration {
+    hidden: no
+    type: number
+    sql: TIMESTAMP_DIFF(MAX(${timestamp_raw}),MIN(${timestamp_raw}), SECOND) ;;
+  }
+
+  # measure: average_turns_session {
+  #   type: average
+  #   sql: sess  ;;
+  # }
+
+
+
+  dimension: session_lengths_bins {}
 }

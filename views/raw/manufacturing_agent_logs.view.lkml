@@ -34,25 +34,25 @@ view: manufacturing_agent_logs {
     sql: ${TABLE}.content_parts ;;
   }
   dimension: error_message {
-    hidden: no
+    hidden: yes
     type: string
     description: "Detailed error message if the status is 'ERROR'."
     sql: ${TABLE}.error_message ;;
   }
   dimension: event_type {
-    hidden: no
+    hidden: yes
     type: string
     description: "The category of the event (e.g., 'LLM_REQUEST', 'TOOL_CALL', 'AGENT_RESPONSE'). Helps in filtering specific types of interactions."
     sql: ${TABLE}.event_type ;;
   }
   dimension: invocation_id {
-    hidden: no
+    hidden: yes
     type: string
     description: "A unique identifier for a single turn or execution within a session. Groups related events like LLM request and response."
     sql: ${TABLE}.invocation_id ;;
   }
   dimension: is_truncated {
-    hidden: no
+    hidden: yes
     type: yesno
     description: "Boolean flag indicating if the 'content' field was truncated because it exceeded the maximum allowed size."
     sql: ${TABLE}.is_truncated = true ;;
@@ -72,7 +72,7 @@ view: manufacturing_agent_logs {
   # }
 
   dimension: latency_ms {
-    hidden: no
+    hidden: yes
     type: string
     description: "A JSON object containing latency measurements, such as 'total_ms' and 'time_to_first_token_ms'."
     sql: LAX_INT64(${TABLE}.latency_ms.total_ms);;
@@ -106,7 +106,7 @@ view: manufacturing_agent_logs {
     hidden: no
     type: time
     description: "The UTC timestamp when the event occurred. Used for ordering events within a session."
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year, day_of_week, hour_of_day, hour2]
     sql: ${TABLE}.timestamp ;;
   }
   dimension: trace_id {
