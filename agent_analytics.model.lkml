@@ -4,6 +4,7 @@ connection: "sample_bigquery_connection"
 # include: "/**/*.view.lkml"                 # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 include: "/explores/agent_logs.explore.lkml"
+include: "/dashboards/agent_analytics_operational_dashboard.dashboard.lookml"
 
 # # Select the views that should be a part of this model,
 # # and define the joins that connect them together.
