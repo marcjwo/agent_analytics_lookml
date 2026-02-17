@@ -444,234 +444,234 @@
     col: 12
     width: 12
     height: 5
-  - title: 'Session Analysis: Duration'
-    name: 'Session Analysis: Duration'
-    model: agent_analytics
-    explore: manufacturing_agent_logs
-    type: looker_column
-    fields: [session_facts.duration_bin, manufacturing_agent_logs.count, session_facts.average_user_turns,
-      manufacturing_agent_logs.agent]
-    pivots: [manufacturing_agent_logs.agent]
-    sorts: [manufacturing_agent_logs.agent]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    y_axes: [{label: '', orientation: left, series: [{axisId: manufacturing_agent_logs.count,
-            id: manufacturing_agent_logs.count, name: Total Sessions}], showLabels: false,
-        showValues: true, valueFormat: '#,##0.0,"k"', unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    series_types:
-      session_facts.average_user_turns: line
-    series_colors:
-      manufacturing_agent_logs.count: "#4285F4"
-      session_facts.average_user_turns: "#FBBC04"
-    series_labels:
-      manufacturing_agent_logs.count: Total Sessions
-      session_facts.average_user_turns: Avg User Turns
-    advanced_vis_config: |-
-      {
-        chart: {},
-        series: [{
-          name: 'baseline_agent'
-        }, {
-          name: 'knowledge_agent'
-        }],
-        "legend": {
-          "align": "center",
-          "verticalAlign": "top",
-          "enabled": true
-        }
-      }
-    defaults_version: 1
-    hidden_fields: [session_facts.average_user_turns]
-    hidden_pivots: {}
-    listen: {}
-    row: 10
-    col: 0
-    width: 12
-    height: 5
-  - title: Agent Latency
-    name: Agent Latency
-    model: agent_analytics
-    explore: manufacturing_agent_logs
-    type: looker_column
-    fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.average_latency,
-      evals.avg_accuracy]
-    sorts: [manufacturing_agent_logs.agent]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    y_axes: [{label: Average Latency in seconds, orientation: left, series: [{axisId: manufacturing_agent_logs.average_latency,
-            id: manufacturing_agent_logs.average_latency, name: Avg Latency (ms)}],
-        showLabels: true, showValues: true, valueFormat: "#,", unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    series_colors:
-      evals.avg_accuracy: "#4285F4"
-      manufacturing_agent_logs.average_latency: "#4285F4"
-    series_labels:
-      manufacturing_agent_logs.average_latency: Avg Latency (ms)
-    series_point_styles:
-      manufacturing_agent_logs.average_latency: auto
-    advanced_vis_config: |-
-      {
-        chart: {},
-        series: [{
-            formatters: [{
-              select: 'name = baseline_agent',
-              style: {
-                color: '#DB4437'
-              }
-            }]
-          },
-          {
-            name: 'Avg Latency (ms)'
-          }
-        ],
-        "legend": {
-          "itemStyle": {
-            "fontSize": "8pt"
-          },
-          "itemDistance": 1
-        }
-      }
-    defaults_version: 1
-    hidden_fields: [evals.avg_accuracy]
-    listen: {}
-    row: 0
-    col: 0
-    width: 6
-    height: 7
-  - title: Agent Accuracy
-    name: Agent Accuracy
-    model: agent_analytics
-    explore: manufacturing_agent_logs
-    type: looker_column
-    fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.average_latency,
-      evals.avg_accuracy]
-    sorts: [manufacturing_agent_logs.agent]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    y_axes: [{label: '', orientation: left, series: [{axisId: evals.avg_accuracy,
-            id: evals.avg_accuracy, name: Avg Accuracy}], showLabels: true, showValues: true,
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
-      {label: !!null '', orientation: right, series: [{axisId: manufacturing_agent_logs.average_latency,
-            id: manufacturing_agent_logs.average_latency, name: Average latency in
-              ms}], showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    series_types:
-      manufacturing_agent_logs.average_latency: scatter
-    series_colors:
-      evals.avg_accuracy: "#4285F4"
-      manufacturing_agent_logs.average_latency: "#EA4335"
-    series_labels:
-      manufacturing_agent_logs.average_latency: Avg Latency (ms)
-    series_point_styles:
-      manufacturing_agent_logs.average_latency: auto
-    advanced_vis_config: |-
-      {
-        chart: {},
-        series: [
-        {
-          formatters: [{
-            select: 'name = baseline_agent',
-            style: {
-              color: '#DB4437'
-            }
-          }]
-        },
-        {
-          name: 'Avg Accuracy'
-        }]
-      }
-    defaults_version: 1
-    hidden_fields: [manufacturing_agent_logs.average_latency]
-    listen: {}
-    row: 0
-    col: 12
-    width: 6
-    height: 7
+  # - title: 'Session Analysis: Duration'
+  #   name: 'Session Analysis: Duration'
+  #   model: agent_analytics
+  #   explore: manufacturing_agent_logs
+  #   type: looker_column
+  #   fields: [session_facts.duration_bin, manufacturing_agent_logs.count, session_facts.average_user_turns,
+  #     manufacturing_agent_logs.agent]
+  #   pivots: [manufacturing_agent_logs.agent]
+  #   sorts: [manufacturing_agent_logs.agent]
+  #   limit: 500
+  #   column_limit: 50
+  #   x_axis_gridlines: false
+  #   y_axis_gridlines: true
+  #   show_view_names: false
+  #   show_y_axis_labels: true
+  #   show_y_axis_ticks: true
+  #   y_axis_tick_density: default
+  #   y_axis_tick_density_custom: 5
+  #   show_x_axis_label: false
+  #   show_x_axis_ticks: true
+  #   y_axis_scale_mode: linear
+  #   x_axis_reversed: false
+  #   y_axis_reversed: false
+  #   plot_size_by_field: false
+  #   trellis: ''
+  #   stacking: ''
+  #   limit_displayed_rows: false
+  #   legend_position: center
+  #   point_style: none
+  #   show_value_labels: false
+  #   label_density: 25
+  #   x_axis_scale: auto
+  #   y_axis_combined: true
+  #   ordering: none
+  #   show_null_labels: false
+  #   show_totals_labels: false
+  #   show_silhouette: false
+  #   totals_color: "#808080"
+  #   y_axes: [{label: '', orientation: left, series: [{axisId: manufacturing_agent_logs.count,
+  #           id: manufacturing_agent_logs.count, name: Total Sessions}], showLabels: false,
+  #       showValues: true, valueFormat: '#,##0.0,"k"', unpinAxis: false, tickDensity: default,
+  #       tickDensityCustom: 5, type: linear}]
+  #   x_axis_zoom: true
+  #   y_axis_zoom: true
+  #   series_types:
+  #     session_facts.average_user_turns: line
+  #   series_colors:
+  #     manufacturing_agent_logs.count: "#4285F4"
+  #     session_facts.average_user_turns: "#FBBC04"
+  #   series_labels:
+  #     manufacturing_agent_logs.count: Total Sessions
+  #     session_facts.average_user_turns: Avg User Turns
+  #   advanced_vis_config: |-
+  #     {
+  #       chart: {},
+  #       series: [{
+  #         name: 'baseline_agent'
+  #       }, {
+  #         name: 'knowledge_agent'
+  #       }],
+  #       "legend": {
+  #         "align": "center",
+  #         "verticalAlign": "top",
+  #         "enabled": true
+  #       }
+  #     }
+  #   defaults_version: 1
+  #   hidden_fields: [session_facts.average_user_turns]
+  #   hidden_pivots: {}
+  #   listen: {}
+  #   row: 10
+  #   col: 0
+  #   width: 12
+  #   height: 5
+  # - title: Agent Latency
+  #   name: Agent Latency
+  #   model: agent_analytics
+  #   explore: manufacturing_agent_logs
+  #   type: looker_column
+  #   fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.average_latency,
+  #     evals.avg_accuracy]
+  #   sorts: [manufacturing_agent_logs.agent]
+  #   limit: 500
+  #   column_limit: 50
+  #   x_axis_gridlines: false
+  #   y_axis_gridlines: true
+  #   show_view_names: false
+  #   show_y_axis_labels: true
+  #   show_y_axis_ticks: true
+  #   y_axis_tick_density: default
+  #   y_axis_tick_density_custom: 5
+  #   show_x_axis_label: false
+  #   show_x_axis_ticks: true
+  #   y_axis_scale_mode: linear
+  #   x_axis_reversed: false
+  #   y_axis_reversed: false
+  #   plot_size_by_field: false
+  #   trellis: ''
+  #   stacking: ''
+  #   limit_displayed_rows: false
+  #   legend_position: center
+  #   point_style: circle
+  #   show_value_labels: false
+  #   label_density: 25
+  #   x_axis_scale: auto
+  #   y_axis_combined: true
+  #   ordering: none
+  #   show_null_labels: false
+  #   show_totals_labels: false
+  #   show_silhouette: false
+  #   totals_color: "#808080"
+  #   y_axes: [{label: Average Latency in seconds, orientation: left, series: [{axisId: manufacturing_agent_logs.average_latency,
+  #           id: manufacturing_agent_logs.average_latency, name: Avg Latency (ms)}],
+  #       showLabels: true, showValues: true, valueFormat: "#,", unpinAxis: false, tickDensity: default,
+  #       tickDensityCustom: 5, type: linear}]
+  #   x_axis_zoom: true
+  #   y_axis_zoom: true
+  #   series_colors:
+  #     evals.avg_accuracy: "#4285F4"
+  #     manufacturing_agent_logs.average_latency: "#4285F4"
+  #   series_labels:
+  #     manufacturing_agent_logs.average_latency: Avg Latency (ms)
+  #   series_point_styles:
+  #     manufacturing_agent_logs.average_latency: auto
+  #   advanced_vis_config: |-
+  #     {
+  #       chart: {},
+  #       series: [{
+  #           formatters: [{
+  #             select: 'name = baseline_agent',
+  #             style: {
+  #               color: '#DB4437'
+  #             }
+  #           }]
+  #         },
+  #         {
+  #           name: 'Avg Latency (ms)'
+  #         }
+  #       ],
+  #       "legend": {
+  #         "itemStyle": {
+  #           "fontSize": "8pt"
+  #         },
+  #         "itemDistance": 1
+  #       }
+  #     }
+  #   defaults_version: 1
+  #   hidden_fields: [evals.avg_accuracy]
+  #   listen: {}
+  #   row: 0
+  #   col: 0
+  #   width: 6
+  #   height: 7
+  # - title: Agent Accuracy
+  #   name: Agent Accuracy
+  #   model: agent_analytics
+  #   explore: manufacturing_agent_logs
+  #   type: looker_column
+  #   fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.average_latency,
+  #     evals.avg_accuracy]
+  #   sorts: [manufacturing_agent_logs.agent]
+  #   limit: 500
+  #   column_limit: 50
+  #   x_axis_gridlines: false
+  #   y_axis_gridlines: true
+  #   show_view_names: false
+  #   show_y_axis_labels: true
+  #   show_y_axis_ticks: true
+  #   y_axis_tick_density: default
+  #   y_axis_tick_density_custom: 5
+  #   show_x_axis_label: false
+  #   show_x_axis_ticks: true
+  #   y_axis_scale_mode: linear
+  #   x_axis_reversed: false
+  #   y_axis_reversed: false
+  #   plot_size_by_field: false
+  #   trellis: ''
+  #   stacking: ''
+  #   limit_displayed_rows: false
+  #   legend_position: center
+  #   point_style: circle
+  #   show_value_labels: false
+  #   label_density: 25
+  #   x_axis_scale: auto
+  #   y_axis_combined: true
+  #   ordering: none
+  #   show_null_labels: false
+  #   show_totals_labels: false
+  #   show_silhouette: false
+  #   totals_color: "#808080"
+  #   y_axes: [{label: '', orientation: left, series: [{axisId: evals.avg_accuracy,
+  #           id: evals.avg_accuracy, name: Avg Accuracy}], showLabels: true, showValues: true,
+  #       unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
+  #     {label: !!null '', orientation: right, series: [{axisId: manufacturing_agent_logs.average_latency,
+  #           id: manufacturing_agent_logs.average_latency, name: Average latency in
+  #             ms}], showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+  #       tickDensityCustom: 5, type: linear}]
+  #   x_axis_zoom: true
+  #   y_axis_zoom: true
+  #   series_types:
+  #     manufacturing_agent_logs.average_latency: scatter
+  #   series_colors:
+  #     evals.avg_accuracy: "#4285F4"
+  #     manufacturing_agent_logs.average_latency: "#EA4335"
+  #   series_labels:
+  #     manufacturing_agent_logs.average_latency: Avg Latency (ms)
+  #   series_point_styles:
+  #     manufacturing_agent_logs.average_latency: auto
+  #   advanced_vis_config: |-
+  #     {
+  #       chart: {},
+  #       series: [
+  #       {
+  #         formatters: [{
+  #           select: 'name = baseline_agent',
+  #           style: {
+  #             color: '#DB4437'
+  #           }
+  #         }]
+  #       },
+  #       {
+  #         name: 'Avg Accuracy'
+  #       }]
+  #     }
+  #   defaults_version: 1
+  #   hidden_fields: [manufacturing_agent_logs.average_latency]
+  #   listen: {}
+  #   row: 0
+  #   col: 12
+  #   width: 6
+  #   height: 7
