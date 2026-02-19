@@ -1,12 +1,4 @@
 # Un-hide and use this explore, or copy the joins into another explore, to get all the fully nested relationships from this view
-explore: adk_threat_assessment {
-  hidden: yes
-    join: adk_threat_assessment__behavior_anomalies {
-      view_label: "Adk Threat Assessment: Behavior Anomalies"
-      sql: LEFT JOIN UNNEST(`@{adk_assessment_table}.behavior_anomalies`}) as adk_threat_assessment__behavior_anomalies ;;
-      relationship: one_to_many
-    }
-}
 view: adk_threat_assessment {
   sql_table_name: `@{project_id}.@{bq_dataset}.@{adk_assessment_table}` ;;
 

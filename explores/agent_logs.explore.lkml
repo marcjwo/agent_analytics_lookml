@@ -6,9 +6,9 @@ include: "/views/refined/eval_results_detailed.view.lkml"
 include: "/views/derived/session_facts.view.lkml"
 include: "/views/derived/evals.view.lkml"
 
-# explore: agent_logs {
-#   label: "Agent Logs"
-# }
+explore: agent_logs {
+  label: "Agent Logs"
+}
 
 explore: manufacturing_agent_logs {
   hidden: yes
