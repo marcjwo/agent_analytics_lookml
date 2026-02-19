@@ -22,6 +22,7 @@ explore: manufacturing_agent_logs {
 }
 
 explore: adk_threat_assessment {
+  label: "Threat Assessment"
   # hidden: yes
   join: adk_threat_assessment__behavior_anomalies {
     view_label: "Threat Assessment"
