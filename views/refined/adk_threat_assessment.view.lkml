@@ -17,6 +17,6 @@ view: +adk_threat_assessment {
       label: "Max Fraud Severity"
       description: "Highest alert level: 2=Fraud Alert, 1=False Positive, 0=Clear"
       type: max
-      sql: ${severity_score} ;;
+      sql: COALESCE(${severity_score}, 0) ;;
     }
 }
