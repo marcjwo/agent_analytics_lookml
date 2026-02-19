@@ -9,7 +9,7 @@ project_name: "agent_analytics"
 
 
 constant: project_id {
-  value: "NickOrlove-Demo"
+  value: "nickorlove-demos"
 }
 
 constant: bq_dataset {
