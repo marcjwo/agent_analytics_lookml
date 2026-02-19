@@ -3,7 +3,6 @@ include: "/views/raw/adk_threat_assessment.view.lkml"
 view: +adk_threat_assessment {
 
     dimension: severity_score {
-      hidden: yes
       type: number
       sql:
       CASE
