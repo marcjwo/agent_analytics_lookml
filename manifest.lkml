@@ -19,3 +19,7 @@ constant: bq_dataset {
 constant: agent_log_table {
   value: "agent_events"
 }
+
+constant: adk_assessment_table {
+  value: "adk_threat_assessment"
+}
