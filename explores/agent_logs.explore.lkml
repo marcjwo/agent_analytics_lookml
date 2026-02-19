@@ -20,16 +20,6 @@ explore: manufacturing_agent_logs {
     relationship: one_to_many
   }
 }
-
-explore: adk_threat_assessment {
-  label: "Threat Assessment"
-  # hidden: yes
-  join: adk_threat_assessment__behavior_anomalies {
-    view_label: "Threat Assessment"
-    sql: LEFT JOIN UNNEST(`adk_threat_assessment.behavior_anomalies`}) as adk_threat_assessment__behavior_anomalies ;;
-    relationship: one_to_many
-  }
-}
   # join: session_facts {
   #   sql_on: ${manufacturing_agent_logs.session_id} = ${session_facts.session_id} ;;
   #   relationship: many_to_one
