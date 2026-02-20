@@ -6,6 +6,45 @@
   preferred_slug: dvEeYJDVCqt4hMdtax3Zk1
   layout: newspaper
   elements:
+  - title: ADK Fraud Detection Results
+    name: adk_fraud_detection_line_chart
+    model: agent_analytics
+    explore: adk_threat_assessment
+    type: looker_line
+    fields: [adk_threat_assessment.event_timestamp_hour, adk_threat_assessment.max_fraud_severity,
+      adk_threat_assessment.agent_decision]
+    pivots: [adk_threat_assessment.agent_decision]
+    fill_fields: [adk_threat_assessment.event_timestamp_hour]
+    sorts: [adk_threat_assessment.agent_decision, adk_threat_assessment.event_timestamp_hour
+        desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    hidden_pivots: {}
+    defaults_version: 1
   - title: Tool Usage by Agent
     name: Tool Usage by Agent
     model: agent_analytics
@@ -444,47 +483,6 @@
     col: 12
     width: 12
     height: 5
-  # ADK Determination
-  - title: ADK Fraud Detection Results
-    name: adk_fraud_detection_line_chart
-    model: agent_analytics
-    explore: adk_threat_assessment
-    type: looker_line
-    fields: [adk_threat_assessment.event_timestamp_hour, adk_threat_assessment.max_fraud_severity,
-      adk_threat_assessment.agent_decision]
-    pivots: [adk_threat_assessment.agent_decision]
-    fill_fields: [adk_threat_assessment.event_timestamp_hour]
-    sorts: [adk_threat_assessment.agent_decision, adk_threat_assessment.event_timestamp_hour
-        desc]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    hidden_pivots: {}
-    defaults_version: 1
-
   # - title: 'Session Analysis: Duration'
   #   name: 'Session Analysis: Duration'
   #   model: agent_analytics
