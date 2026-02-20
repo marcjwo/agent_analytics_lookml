@@ -11,6 +11,10 @@
     model: agent_analytics
     explore: adk_threat_assessment
     type: looker_line
+    row: 0     # Top of the dashboard
+    col: 0     # Far left of the dashboard
+    width: 12  # Half the width of the screen (out of 24)
+    height: 8  # Standard height for a line chart
     fields: [adk_threat_assessment.event_timestamp_hour, adk_threat_assessment.max_fraud_severity,
       adk_threat_assessment.agent_decision]
     pivots: [adk_threat_assessment.agent_decision]
