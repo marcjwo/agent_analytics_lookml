@@ -32,7 +32,7 @@ view: adk_threat_assessment {
   }
   dimension_group: event_timestamp {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, hour, week, month, quarter, year]
     sql: ${TABLE}.event_timestamp ;;
   }
   dimension: has_security_mismatch {
