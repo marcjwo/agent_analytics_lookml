@@ -50,7 +50,7 @@
     row: 0
     col: 0
     width: 12
-    height: 3
+    height: 4
   - title: Agent Activity
     name: agent_activity
     model: agent_analytics
@@ -99,7 +99,7 @@
     row: 4
     col: 0
     width: 12
-    height: 3
+    height: 4
   - title: Tool Usage by Agent
     name: Tool Usage by Agent
     model: agent_analytics
@@ -223,7 +223,7 @@
     row: 0
     col: 18
     width: 6
-    height: 7
+    height: 8
   - title: Token Usage by Agent
     name: Token Usage by Agent
     model: agent_analytics
@@ -351,7 +351,7 @@
     row: 0
     col: 12
     width: 6
-    height: 7
+    height: 8
   - title: Tool Usage
     name: Tool Usage
     model: agent_analytics
