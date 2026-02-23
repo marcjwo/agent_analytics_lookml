@@ -33,7 +33,7 @@ view: session_facts {
   dimension_group: session_start {
     hidden: no
     type: time
-    timeframes: [raw, time, date, minute]
+    timeframes: [raw, time, date, minute, second, microsecond]
     sql: ${TABLE}.min_timestamp;;
   }
   dimension_group: session_end {
