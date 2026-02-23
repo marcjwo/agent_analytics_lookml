@@ -366,7 +366,7 @@
     defaults_version: 1
     listen: {}
     row: 0
-    col: 9
+    col: 12
     width: 12
     height: 8
   - title: Tool Usage
@@ -450,7 +450,7 @@
     title_placement_manufacturing_agent_logs.distinct_tool_count: above
     value_format_manufacturing_agent_logs.distinct_tool_count: ''
     listen: {}
-    row: 8
+    row: 9
     col: 0
     width: 24
     height: 3
