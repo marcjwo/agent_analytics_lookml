@@ -429,44 +429,44 @@
         type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
-    advanced_vis_config: |-
-      {
-        "chart": {
-          "backgroundColor": "rgba(0, 0, 0, 0)",
-          "inverted": false,
-          "style": {
-            "fontFamily": "inherit",
-            "fontSize": "12px"
-          },
-          "type": "area"
-        },
-        "series": [{
-            "color": "#EA4335",
-            "id": "baseline_agent - manufacturing_agent_logs.count",
-            "name": "baseline_agent",
-            "type": "area",
-            "visible": true
-          },
-          {
-            "color": "#4285F4",
-            "id": "knowledge_agent - manufacturing_agent_logs.count",
-            "name": "knowledge_agent",
-            "type": "area",
-            "visible": true
-          }
-        ],
-        "xAxis": {
-          "type": "datetime"
-        },
-        "yAxis": [{
-          "type": "linear"
-        }],
-        "legend": {
-          "align": "center",
-          "verticalAlign": "top",
-          "enabled": true
-        }
-      }
+    # advanced_vis_config: |-
+    #   {
+    #     "chart": {
+    #       "backgroundColor": "rgba(0, 0, 0, 0)",
+    #       "inverted": false,
+    #       "style": {
+    #         "fontFamily": "inherit",
+    #         "fontSize": "12px"
+    #       },
+    #       "type": "area"
+    #     },
+    #     "series": [{
+    #         "color": "#EA4335",
+    #         "id": "baseline_agent - manufacturing_agent_logs.count",
+    #         "name": "baseline_agent",
+    #         "type": "area",
+    #         "visible": true
+    #       },
+    #       {
+    #         "color": "#4285F4",
+    #         "id": "knowledge_agent - manufacturing_agent_logs.count",
+    #         "name": "knowledge_agent",
+    #         "type": "area",
+    #         "visible": true
+    #       }
+    #     ],
+    #     "xAxis": {
+    #       "type": "datetime"
+    #     },
+    #     "yAxis": [{
+    #       "type": "linear"
+    #     }],
+    #     "legend": {
+    #       "align": "center",
+    #       "verticalAlign": "top",
+    #       "enabled": true
+    #     }
+    #   }
     hidden_pivots: {}
     custom_color_enabled: true
     show_single_value_title: true
