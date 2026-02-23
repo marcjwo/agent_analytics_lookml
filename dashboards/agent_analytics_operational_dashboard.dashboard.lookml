@@ -16,7 +16,7 @@
     pivots: [adk_threat_assessment.agent_decision]
     fill_fields: [adk_threat_assessment.event_timestamp_hour]
     filters:
-      adk_threat_assessment.event_timestamp_hour: after 1 months ago
+      adk_threat_assessment.event_timestamp_hour: after 2026/02/10 12:00
     sorts: [adk_threat_assessment.agent_decision, adk_threat_assessment.event_timestamp_hour
         desc]
     limit: 500
@@ -60,7 +60,7 @@
     pivots: [agent_logs.agent]
     fill_fields: [agent_logs.timestamp_hour]
     filters:
-    agent_logs.timestamp_hour: after 1 months ago
+    agent_logs.timestamp_hour: after 2026/02/10 12:00
     agent_logs.event_type: '"AGENT_STARTING"'
     sorts: [agent_logs.agent, agent_logs.timestamp_hour desc]
     limit: 500
