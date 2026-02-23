@@ -8,7 +8,7 @@
 #     }
 # }
 view: manufacturing_agent_logs {
-  sql_table_name: `agentic-cloud-demo.manufacturing_data.manufacturing_agent_logs` ;;
+  sql_table_name:`@{project_id}.@{bq_dataset}.@{agent_log_table}`  ;;
   fields_hidden_by_default: yes
 
   dimension: agent {
