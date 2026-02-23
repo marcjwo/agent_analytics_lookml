@@ -235,7 +235,7 @@
     hidden_pivots: {}
     defaults_version: 1
     listen: {}
-    row: 0
+    row: 11
     col: 12
     width: 12
     height: 8
@@ -450,7 +450,7 @@
     title_placement_manufacturing_agent_logs.distinct_tool_count: above
     value_format_manufacturing_agent_logs.distinct_tool_count: ''
     listen: {}
-    row: 9
+    row: 8
     col: 0
     width: 24
     height: 3
@@ -552,7 +552,7 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     listen: {}
-    row: 10
+    row: 0
     col: 12
     width: 12
     height: 5
