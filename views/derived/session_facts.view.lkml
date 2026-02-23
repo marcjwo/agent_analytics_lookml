@@ -6,7 +6,6 @@ view: session_facts {
   derived_table: {
     explore_source: manufacturing_agent_logs {
       column: session_id {}
-      column: agent {}
       column: max_timestamp {}
       column: min_timestamp {}
       column: user_turns_count {}
@@ -17,11 +16,6 @@ view: session_facts {
     primary_key: yes
     description: "A unique identifier for the entire conversation session. Used to group all events belonging to a single user interaction."
   }
-  dimension: agent {
-    hidden: no
-    type: string
-    sql: ${TABLE}.agent ;;
-  }
   dimension: max_timestamp {
     description: ""
     type: number
@@ -29,18 +23,6 @@ view: session_facts {
   dimension: min_timestamp {
     description: ""
     type: number
-  }
-  dimension_group: session_start {
-    hidden: no
-    type: time
-    timeframes: [raw, time, date, minute, second, millisecond]
-    sql: ${TABLE}.min_timestamp;;
-  }
-  dimension_group: session_end {
-    hidden: no
-    type: time
-    timeframes: [raw, time, date, minute, second, millisecond]
-    sql:${TABLE}.max_timestamp ;;
   }
   dimension: user_turns_count {
     description: ""
