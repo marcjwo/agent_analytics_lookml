@@ -13,6 +13,11 @@ view: reasoning_word_frequency {
       AND word NOT IN ('with', 'this', 'that', 'from', 'been', 'which', 'user', 'has', 'have', 'was', 'were')
     ;;
   }
+  dimension: primary_key {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}.primary_key ;;
+  }
   dimension: session_id {
     hidden: no
     type: string
