@@ -17,6 +17,11 @@ view: session_facts {
     primary_key: yes
     description: "A unique identifier for the entire conversation session. Used to group all events belonging to a single user interaction."
   }
+  dimension: agent {
+    hidden: no
+    type: string
+    sql: ${TABLE}.agent ;;
+  }
   dimension: max_timestamp {
     description: ""
     type: number
