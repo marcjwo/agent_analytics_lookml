@@ -47,7 +47,7 @@
     interpolation: linear
     hidden_pivots: {}
     defaults_version: 1
-    row: 0
+    row: 4
     col: 0
     width: 12
     height: 4
@@ -96,7 +96,7 @@
     show_silhouette: false
     totals_color: "#808080"
     defaults_version: 1
-    row: 4
+    row: 0
     col: 0
     width: 12
     height: 4
