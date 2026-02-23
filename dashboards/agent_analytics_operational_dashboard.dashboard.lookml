@@ -11,14 +11,14 @@
     model: agent_analytics
     explore: adk_threat_assessment
     type: looker_line
-    fields: [adk_threat_assessment.event_timestamp_hour, adk_threat_assessment.max_fraud_severity,
-      adk_threat_assessment.agent_decision]
+    fields: [adk_threat_assessment.event_timestamp_hour, adk_threat_assessment.agent_decision,
+      adk_threat_assessment.count]
     pivots: [adk_threat_assessment.agent_decision]
     fill_fields: [adk_threat_assessment.event_timestamp_hour]
     filters:
       adk_threat_assessment.event_timestamp_hour: after 2026/02/10 12:00
     sorts: [adk_threat_assessment.agent_decision, adk_threat_assessment.event_timestamp_hour
-        desc]
+      desc]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
