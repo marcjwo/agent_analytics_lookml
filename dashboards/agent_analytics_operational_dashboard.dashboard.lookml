@@ -235,9 +235,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen: {}
-    row: 0
-    col: 18
-    width: 6
+    row: 11
+    col: 9
+    width: 9
     height: 10
   - title: Token Usage by Agent
     name: Token Usage by Agent
@@ -363,10 +363,10 @@
     hidden_pivots: {}
     defaults_version: 1
     listen: {}
-    row: 0
-    col: 12
-    width: 6
-    height: 8
+    row: 11
+    col: 0
+    width: 9
+    height: 7
   - title: Tool Usage
     name: Tool Usage
     model: agent_analytics
@@ -447,7 +447,7 @@
     title_placement_manufacturing_agent_logs.distinct_tool_count: above
     value_format_manufacturing_agent_logs.distinct_tool_count: ''
     listen: {}
-    row: 7
+    row: 8
     col: 0
     width: 24
     height: 3
