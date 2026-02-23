@@ -29,13 +29,13 @@ view: session_facts {
     hidden: no
     type: time
     timeframes: [raw, time, date, minute]
-    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.min_timestamp AS INT64)) ;;
+    sql: ${TABLE}.min_timestamp;;
   }
-  dimension_group: session_endt {
+  dimension_group: session_end {
     hidden: no
     type: time
     timeframes: [raw, time, date, minute]
-    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.max_timestamp AS INT64)) ;;
+    sql:${TABLE}.max_timestamp ;;
   }
   dimension: user_turns_count {
     description: ""
