@@ -98,6 +98,7 @@ view: +manufacturing_agent_logs {
   #   type: count
   #   filters: [event_type: "TOOL_STARTING"]
   # }
+#
 
   measure: distinct_tool_count {
     hidden: no
@@ -231,33 +232,79 @@ view: +manufacturing_agent_logs {
     sql: TIMESTAMP_DIFF(MAX(${timestamp_raw}),MIN(${timestamp_raw}), SECOND) ;;
   }
 
-  measure: execute_sql_count {
+  measure: run_user_summary_investigation {
     hidden: no
     group_label: "Tool count"
     type: count
-    filters: [tool_name: "execute_sql"]
+    filters: [tool_name: "run_user_summary_investigation"]
   }
 
-  measure: get_table_info_count {
+  measure: log_false_positive {
     hidden: no
     group_label: "Tool count"
     type: count
-    filters: [tool_name: "get_table_info"]
+    filters: [tool_name: "log_false_positive"]
   }
 
-  measure: list_table_ids_count {
+  measure: get_visual_analysis_for_user {
     hidden: no
     group_label: "Tool count"
     type: count
-    filters: [tool_name: "list_table_ids"]
+    filters: [tool_name: "get_visual_analysis_for_user"]
   }
 
-  measure: search_places {
+  measure: get_gcs_uri_for_user {
     hidden: no
     group_label: "Tool count"
     type: count
-    filters: [tool_name: "search_places"]
+    filters: [tool_name: "get_gcs_uri_for_user"]
   }
+
+  measure: generate_signed_url {
+    hidden: no
+    group_label: "Tool count"
+    type: count
+    filters: [tool_name: "generate_signed_url"]
+  }
+
+  measure: escalate_to_human {
+    hidden: no
+    group_label: "Tool count"
+    type: count
+    filters: [tool_name: "escalate_to_human"]
+  }
+
+  measure: average_turns_session {
+    type: average
+    sql: sess  ;;
+  }
+  # measure: execute_sql_count {
+  #   hidden: no
+  #   group_label: "Tool count"
+  #   type: count
+  #   filters: [tool_name: "execute_sql"]
+  # }
+
+  # measure: get_table_info_count {
+  #   hidden: no
+  #   group_label: "Tool count"
+  #   type: count
+  #   filters: [tool_name: "get_table_info"]
+  # }
+
+  # measure: list_table_ids_count {
+  #   hidden: no
+  #   group_label: "Tool count"
+  #   type: count
+  #   filters: [tool_name: "list_table_ids"]
+  # }
+
+  # measure: search_places {
+  #   hidden: no
+  #   group_label: "Tool count"
+  #   type: count
+  #   filters: [tool_name: "search_places"]
+  # }
 
   # measure: average_turns_session {
   #   type: average
