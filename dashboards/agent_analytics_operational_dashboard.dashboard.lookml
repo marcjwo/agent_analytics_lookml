@@ -49,8 +49,8 @@
     defaults_version: 1
     row: 4
     col: 0
-    width: 12
-    height: 5
+    width: 9
+    height: 4
   - title: Agent Activity
     name: agent_activity
     model: agent_analytics
@@ -113,8 +113,8 @@
     showLegend: true
     row: 0
     col: 0
-    width: 12
-    height: 5
+    width: 9
+    height: 4
   - title: Tool Usage by Agent
     name: Tool Usage by Agent
     model: agent_analytics
@@ -235,10 +235,10 @@
     hidden_pivots: {}
     defaults_version: 1
     listen: {}
-    row: 11
-    col: 9
+    row: 0
+    col: 12
     width: 9
-    height: 10
+    height: 8
   - title: Token Usage by Agent
     name: Token Usage by Agent
     model: agent_analytics
@@ -246,6 +246,8 @@
     type: looker_column
     fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.sum_of_prompt_token,
       manufacturing_agent_logs.sum_of_completion_token]
+    filters:
+      manufacturing_agent_logs.sum_of_prompt_token: ">0"
     sorts: [manufacturing_agent_logs.agent]
     limit: 500
     column_limit: 50
@@ -363,10 +365,10 @@
     hidden_pivots: {}
     defaults_version: 1
     listen: {}
-    row: 11
-    col: 0
+    row: 0
+    col: 9
     width: 9
-    height: 7
+    height: 8
   - title: Tool Usage
     name: Tool Usage
     model: agent_analytics
@@ -376,6 +378,7 @@
       manufacturing_agent_logs.error_count, manufacturing_agent_logs.failure_rate]
     filters:
       manufacturing_agent_logs.event_type: '"TOOL_COMPLETED","TOOL_ERROR"'
+      manufacturing_agent_logs.distinct_tool_count: ">0"
     limit: 500
     column_limit: 50
     hidden_fields: []
