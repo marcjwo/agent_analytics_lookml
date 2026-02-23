@@ -6,6 +6,7 @@ view: session_facts {
   derived_table: {
     explore_source: manufacturing_agent_logs {
       column: session_id {}
+      column: agent {}
       column: max_timestamp {}
       column: min_timestamp {}
       column: user_turns_count {}
@@ -23,6 +24,18 @@ view: session_facts {
   dimension: min_timestamp {
     description: ""
     type: number
+  }
+  dimension_group: session_start {
+    hidden: no
+    type: time
+    timeframes: [raw, time, date, minute]
+    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.min_timestamp AS INT64)) ;;
+  }
+  dimension_group: session_endt {
+    hidden: no
+    type: time
+    timeframes: [raw, time, date, minute]
+    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.max_timestamp AS INT64)) ;;
   }
   dimension: user_turns_count {
     description: ""
