@@ -49,7 +49,7 @@
     defaults_version: 1
     row: 4
     col: 0
-    width: 9
+    width: 12
     height: 4
   - title: Agent Activity
     name: agent_activity
@@ -113,7 +113,7 @@
     showLegend: true
     row: 0
     col: 0
-    width: 9
+    width: 12
     height: 4
   - title: Tool Usage by Agent
     name: Tool Usage by Agent
@@ -237,7 +237,7 @@
     listen: {}
     row: 0
     col: 12
-    width: 9
+    width: 12
     height: 8
   - title: Token Usage by Agent
     name: Token Usage by Agent
@@ -367,7 +367,7 @@
     listen: {}
     row: 0
     col: 9
-    width: 9
+    width: 12
     height: 8
   - title: Tool Usage
     name: Tool Usage
