@@ -98,7 +98,7 @@
     hidden_pivots: {}
     defaults_version: 1
     series_colors:
-    AGENT_STARTING - agent_logs.invocation_count: "#34A853"
+      AGENT_STARTING - agent_logs.invocation_count: "#34A853"
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
