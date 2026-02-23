@@ -56,13 +56,13 @@
     model: agent_analytics
     explore: agent_logs
     type: looker_line
-    fields: [agent_logs.event_type, agent_logs.invocation_count, agent_logs.timestamp_hour]
-    pivots: [agent_logs.event_type]
+    fields: [agent_logs.invocation_count, agent_logs.timestamp_hour, agent_logs.agent]
+    pivots: [agent_logs.agent]
     fill_fields: [agent_logs.timestamp_hour]
     filters:
-      agent_logs.timestamp_hour: after 1 months ago
-      agent_logs.event_type: '"AGENT_STARTING"'
-    sorts: [agent_logs.event_type, agent_logs.timestamp_hour desc]
+    agent_logs.timestamp_hour: after 2026/02/01 12:03
+    agent_logs.event_type: '"AGENT_STARTING"'
+    sorts: [agent_logs.agent, agent_logs.timestamp_hour desc]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -98,7 +98,7 @@
     hidden_pivots: {}
     defaults_version: 1
     series_colors:
-      AGENT_STARTING - agent_logs.invocation_count: "#34A853"
+    AGENT_STARTING - agent_logs.invocation_count: "#34A853"
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
