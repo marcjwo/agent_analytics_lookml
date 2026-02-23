@@ -61,6 +61,7 @@
     fill_fields: [agent_logs.timestamp_hour]
     filters:
       agent_logs.timestamp_hour: after 1 months ago
+      agent_logs.event_type: '"AGENT_STARTING"'
     sorts: [agent_logs.event_type, agent_logs.timestamp_hour desc]
     limit: 500
     column_limit: 50
@@ -96,6 +97,8 @@
     hidden_points_if_no: []
     hidden_pivots: {}
     defaults_version: 1
+    series_colors:
+      AGENT_STARTING - agent_logs.invocation_count: "#34A853"
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
