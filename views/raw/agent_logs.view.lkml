@@ -36,7 +36,7 @@ view: agent_logs {
   dimension_group: timestamp {
     hidden: no
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, hour, date, week, month, quarter, year]
     sql: ${TABLE}.timestamp ;;
   }
   dimension: user_id {
