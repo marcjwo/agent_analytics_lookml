@@ -120,11 +120,12 @@
     model: agent_analytics
     explore: manufacturing_agent_logs
     type: looker_column
-    fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.count, manufacturing_agent_logs.tool_name]
+    fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.tool_name, manufacturing_agent_logs.count]
     pivots: [manufacturing_agent_logs.tool_name]
     filters:
       manufacturing_agent_logs.tool_name: "-NULL"
-    sorts: [manufacturing_agent_logs.tool_name, manufacturing_agent_logs.agent]
+    sorts: [manufacturing_agent_logs.agent, manufacturing_agent_logs.tool_name desc,
+      manufacturing_agent_logs.count desc 0]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -134,7 +135,7 @@
     show_y_axis_ticks: true
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
-    show_x_axis_label: false
+    show_x_axis_label: true
     show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
@@ -154,84 +155,8 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    color_application:
-      collection_id: google
-      palette_id: google-categorical-0
-      options:
-        steps: 5
-    y_axes: [{label: '', orientation: left, series: [{axisId: execute_sql - manufacturing_agent_logs.count,
-            id: execute_sql - manufacturing_agent_logs.count, name: execute_sql},
-          {axisId: get_table_info - manufacturing_agent_logs.count, id: get_table_info
-              - manufacturing_agent_logs.count, name: get_table_info}, {axisId: list_table_ids
-              - manufacturing_agent_logs.count, id: list_table_ids - manufacturing_agent_logs.count,
-            name: list_table_ids}, {axisId: search_places - manufacturing_agent_logs.count,
-            id: search_places - manufacturing_agent_logs.count, name: search_places}],
-        showLabels: false, showValues: true, valueFormat: '#,##0.0,"k"', unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
-    hide_legend: true
-    advanced_vis_config: |-
-      {
-        chart: {},
-        series: [{
-          name: 'execute_sql',
-          formatters: [{
-            select: 'name = baseline_agent',
-              style: {
-                color: '#E67368'
-              },
-          },
-          {
-            select: 'name = knowledge_agent',
-              style: {
-                color: '#6EA1F7'
-              },
-          }]
-        }, {
-          name: 'get_table_info',
-          formatters: [{
-            select: 'name = baseline_agent',
-              style: {
-                color: '#DB4437'
-              },
-          },
-          {
-            select: 'name = knowledge_agent',
-              style: {
-                color: '#4285F4'
-              },
-          }]
-        }, {
-          name: 'list_table_ids',
-          formatters: [{
-            select: 'name = baseline_agent',
-              style: {
-                color: '#B53225'
-              },
-          },
-          {
-            select: 'name = knowledge_agent',
-              style: {
-                color: '#3266D5'
-              },
-          }]
-        }, {
-          name: 'search_places',
-          formatters: [{
-            select: 'name = baseline_agent',
-              style: {
-                color: '#8F2116'
-              },
-          },
-          {
-            select: 'name = knowledge_agent',
-              style: {
-                color: '#254CB6'
-              },
-          }]
-        }]
-      }
     hidden_pivots: {}
     defaults_version: 1
     listen: {}
