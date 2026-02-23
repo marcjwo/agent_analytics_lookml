@@ -461,6 +461,8 @@
     type: looker_area
     fields: [manufacturing_agent_logs.count, manufacturing_agent_logs.timestamp_hour2,
       manufacturing_agent_logs.agent]
+    filters:
+      manufacturing_agent_logs.count: ">0"
     pivots: [manufacturing_agent_logs.agent]
     sorts: [manufacturing_agent_logs.agent, manufacturing_agent_logs.timestamp_hour2
         desc]
