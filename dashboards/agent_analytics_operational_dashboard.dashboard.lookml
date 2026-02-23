@@ -484,7 +484,7 @@
     trellis: ''
     stacking: ''
     limit_displayed_rows: false
-    legend_position: bottom
+    legend_position: center
     point_style: none
     show_value_labels: false
     label_density: 25
