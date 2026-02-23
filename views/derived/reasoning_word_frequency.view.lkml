@@ -3,6 +3,7 @@ view: reasoning_word_frequency {
     sql:
       SELECT
         session_id,
+        CONCAT(session_id, '|', word) as primary_key,
         agent_decision,  -- Preserving the decision for filtering/pivoting
         word
       FROM `@{project_id}.@{bq_dataset}.@{adk_assessment_table}`,
