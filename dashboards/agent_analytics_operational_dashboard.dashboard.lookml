@@ -60,7 +60,7 @@
     pivots: [agent_logs.agent]
     fill_fields: [agent_logs.timestamp_hour]
     filters:
-    agent_logs.timestamp_hour: after 2026/02/01 12:03
+    agent_logs.timestamp_hour: after 1 months ago
     agent_logs.event_type: '"AGENT_STARTING"'
     sorts: [agent_logs.agent, agent_logs.timestamp_hour desc]
     limit: 500
