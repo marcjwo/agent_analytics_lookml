@@ -7,7 +7,7 @@ view: reasoning_word_frequency {
         word
       FROM `@{project_id}.@{bq_dataset}.@{adk_assessment_table}`,
       -- Logic: Strip punctuation, lowercase, split into array, then expand to rows
-      UNNEST(SPLIT(LOWER(REGEXP_REPLACE(narrative, r'[^a-zA-Z ]', '')), ' ')) as word
+      UNNEST(SPLIT(LOWER(REGEXP_REPLACE(agent_reasoning, r'[^a-zA-Z ]', '')), ' ')) as word
       WHERE LENGTH(word) > 3
       -- Filter out 'noise' words that carry no meaning
       AND word NOT IN ('with', 'this', 'that', 'from', 'been', 'which', 'user', 'has', 'have', 'was', 'were')
