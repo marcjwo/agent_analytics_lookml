@@ -59,6 +59,8 @@
     fields: [agent_logs.event_type, agent_logs.invocation_count, agent_logs.timestamp_hour]
     pivots: [agent_logs.event_type]
     fill_fields: [agent_logs.timestamp_hour]
+    filters:
+      agent_logs.timestamp_hour: after 1 months ago
     sorts: [agent_logs.event_type, agent_logs.timestamp_hour desc]
     limit: 500
     column_limit: 50
