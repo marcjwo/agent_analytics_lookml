@@ -15,6 +15,8 @@
       adk_threat_assessment.agent_decision]
     pivots: [adk_threat_assessment.agent_decision]
     fill_fields: [adk_threat_assessment.event_timestamp_hour]
+    filters:
+      adk_threat_assessment.event_timestamp_hour: after 1 months ago
     sorts: [adk_threat_assessment.agent_decision, adk_threat_assessment.event_timestamp_hour
         desc]
     limit: 500
@@ -48,17 +50,18 @@
     row: 0
     col: 0
     width: 12
-    height: 4
+    height: 3
   - title: Agent Activity
     name: agent_activity
     model: agent_analytics
     explore: agent_logs
     type: looker_line
-    fields: [agent_logs.timestamp_hour, agent_logs.event_type, agent_logs.invocation_count]
+    fields: [agent_logs.event_type, agent_logs.timestamp_hour, agent_logs.session_count]
     pivots: [agent_logs.event_type]
     fill_fields: [agent_logs.timestamp_hour]
     filters:
       agent_logs.event_type: '"AGENT_STARTING"'
+      agent_logs.timestamp_hour: after 1 months ago
     sorts: [agent_logs.event_type, agent_logs.timestamp_hour desc]
     limit: 500
     column_limit: 50
@@ -87,11 +90,16 @@
     show_null_points: true
     interpolation: linear
     hidden_pivots: {}
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
     defaults_version: 1
     row: 4
     col: 0
     width: 12
-    height: 4
+    height: 3
   - title: Tool Usage by Agent
     name: Tool Usage by Agent
     model: agent_analytics
