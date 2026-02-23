@@ -48,7 +48,7 @@
     row: 0
     col: 0
     width: 12
-    height: 3
+    height: 4
   - title: Agent Activity
     name: agent_activity
     model: agent_analytics
@@ -88,10 +88,10 @@
     interpolation: linear
     hidden_pivots: {}
     defaults_version: 1
-    row: 3
+    row: 4
     col: 0
     width: 12
-    height: 3
+    height: 4
   - title: Tool Usage by Agent
     name: Tool Usage by Agent
     model: agent_analytics
