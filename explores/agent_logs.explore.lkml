@@ -13,7 +13,6 @@ explore: agent_logs {
 }
 
 explore: manufacturing_agent_logs {
-  hidden: yes
   join: manufacturing_agent_logs__content_parts {
     view_label: "Manufacturing Agent Logs: Content Parts"
     sql: LEFT JOIN UNNEST(${manufacturing_agent_logs.content_parts}) as manufacturing_agent_logs__content_parts ;;
