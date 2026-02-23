@@ -5,7 +5,7 @@ view: reasoning_word_frequency {
         session_id,
         agent_decision,  -- Preserving the decision for filtering/pivoting
         word
-      FROM `@{project_id}.@{}@{bq_dataset}.@{}@{adk_assessment_table}`,
+      FROM `@{project_id}.@{bq_dataset}.@{adk_assessment_table}`,
       -- Logic: Strip punctuation, lowercase, split into array, then expand to rows
       UNNEST(SPLIT(LOWER(REGEXP_REPLACE(narrative, r'[^a-zA-Z ]', '')), ' ')) as word
       WHERE LENGTH(word) > 3
