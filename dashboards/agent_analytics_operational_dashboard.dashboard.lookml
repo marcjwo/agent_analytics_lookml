@@ -366,7 +366,7 @@
     defaults_version: 1
     listen: {}
     row: 11
-    col: 12
+    col: 0
     width: 12
     height: 8
   - title: Tool Usage
@@ -555,7 +555,7 @@
     row: 0
     col: 12
     width: 12
-    height: 5
+    height: 8
   # - title: 'Session Analysis: Duration'
   #   name: 'Session Analysis: Duration'
   #   model: agent_analytics
