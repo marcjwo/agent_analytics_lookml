@@ -8,6 +8,12 @@ view: +manufacturing_agent_logs {
     primary_key: yes
     sql: FARM_FINGERPRINT(CONCAT(${timestamp_raw},${user_id})) ;;
   }
+  dimension: agent {
+    hidden: no
+    type: string
+    description: "The name of the agent that generated this event. Useful for multi-agent systems."
+    sql: LOWER(${TABLE}.agent) ;;
+  }
 
   dimension: summary {
     hidden: yes
