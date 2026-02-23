@@ -33,13 +33,13 @@ view: session_facts {
   dimension_group: session_start {
     hidden: no
     type: time
-    timeframes: [raw, time, date, minute, second, microsecond]
+    timeframes: [raw, time, date, minute, second, millisecond]
     sql: ${TABLE}.min_timestamp;;
   }
   dimension_group: session_end {
     hidden: no
     type: time
-    timeframes: [raw, time, date, minute]
+    timeframes: [raw, time, date, minute, second, millisecond]
     sql:${TABLE}.max_timestamp ;;
   }
   dimension: user_turns_count {
