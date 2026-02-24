@@ -169,11 +169,11 @@
     model: agent_analytics
     explore: manufacturing_agent_logs
     type: looker_column
-    fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.sum_of_prompt_token,
+    fields: [manufacturing_agent_logs.sum_of_prompt_token, manufacturing_agent_logs.agent,
       manufacturing_agent_logs.sum_of_completion_token]
     filters:
-      manufacturing_agent_logs.sum_of_prompt_token: ">0"
-    sorts: [manufacturing_agent_logs.agent]
+    manufacturing_agent_logs.sum_of_all_token: ">0"
+    sorts: [manufacturing_agent_logs.sum_of_prompt_token desc 0]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -183,7 +183,7 @@
     show_y_axis_ticks: true
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
-    show_x_axis_label: false
+    show_x_axis_label: true
     show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
@@ -193,8 +193,8 @@
     stacking: normal
     limit_displayed_rows: false
     legend_position: center
-    point_style: circle
-    show_value_labels: true
+    point_style: none
+    show_value_labels: false
     label_density: 25
     x_axis_scale: auto
     y_axis_combined: true
@@ -203,93 +203,10 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    y_axes: [{label: '', orientation: left, series: [{axisId: manufacturing_agent_logs.sum_of_completion_token,
-            id: manufacturing_agent_logs.sum_of_completion_token, name: Total completion
-              token}, {axisId: manufacturing_agent_logs.sum_of_prompt_token, id: manufacturing_agent_logs.sum_of_prompt_token,
-            name: Total prompt token}], showLabels: false, showValues: true, valueFormat: '#,##0.0,,"M"',
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
-    hide_legend: true
-    label_value_format: '[<20000]#,##0.0,"k output token";#,##0.0,"k input token"'
-    series_colors:
-      manufacturing_agent_logs.count: "#4285F4"
-      manufacturing_agent_logs.user_count: "#EA4335"
-      manufacturing_agent_logs.sum_of_prompt_token: "#4285F4"
-      manufacturing_agent_logs.sum_of_candidate_token: "#EA4335"
-    series_labels:
-      manufacturing_agent_logs.count: Agent Uses
-      manufacturing_agent_logs.user_count: Distinct Agent Users
-    label_color: [grey]
-    advanced_vis_config: |-
-      {
-        "chart": {
-          "backgroundColor": "rgba(0, 0, 0, 0)",
-          "inverted": false,
-          "style": {
-            "fontFamily": "inherit",
-            "fontSize": "12px"
-          },
-          "type": "column"
-        },
-        "series": [{
-            "color": "#4285F4",
-            "id": "manufacturing_agent_logs.sum_of_prompt_token",
-            "name": "Total prompt token",
-            formatters: [{
-                select: 'name = baseline_agent',
-                style: {
-                  color: '#E67368'
-                }
-              },
-              {
-                select: 'name = knowledge_agent',
-                style: {
-                  color: '#6EA1F7'
-                }
-              }
-            ],
-            "type": "column",
-            "visible": true
-          },
-          {
-            "color": "#EA4335",
-            "id": "manufacturing_agent_logs.sum_of_candidate_token",
-            "name": "Total candidate token",
-            formatters: [{
-                select: 'name = baseline_agent',
-                style: {
-                  color: '#DB4437'
-                }
-              },
-              {
-                select: 'name = knowledge_agent',
-                style: {
-                  color: '#4285F4'
-                }
-              }
-            ],
-            "type": "column",
-            "visible": true
-          }
-        ],
-        "xAxis": {
-          "type": "category"
-        },
-        "yAxis": [{
-          "type": "linear"
-        }],
-        "legend": {
-          "align": "center",
-          "verticalAlign": "top",
-          "itemStyle": {
-            "fontSize": "8pt"
-          }
-        }
-      }
     hidden_pivots: {}
     defaults_version: 1
-    listen: {}
     row: 11
     col: 0
     width: 12
