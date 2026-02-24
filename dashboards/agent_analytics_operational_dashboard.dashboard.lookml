@@ -5,12 +5,6 @@
   description: ''
   preferred_slug: dvEeYJDVCqt4hMdtax3Zk1
   layout: newspaper
-  embed_style:
-    background_color: "#033122"       # Deep backdrop green
-    title_color: "#000000"           # Headline black
-    show_title: true
-    tile_background_color: "#2d4e3d"  # Surface green
-    tile_text_color: "#a4fd8c"       # Light green body text
   elements:
   - title: ADK Fraud Detection Results
     name: adk_fraud_detection_line_chart
