@@ -349,7 +349,7 @@
     fields: [reasoning_word_frequency.word, reasoning_word_frequency.occurrence_count]
     filters:
       reasoning_word_frequency.word: "-transactions,-transaction,-travel,-impossible,-days,-alert"
-      reasoning_word_frequency.agent_decision: '"ESCALATION_NEEDED"'
+      reasoning_word_frequency.agent_decision: '"FALSE_POSITIVE"'
     sorts: [reasoning_word_frequency.occurrence_count desc 0]
     limit: 20
     column_limit: 50
