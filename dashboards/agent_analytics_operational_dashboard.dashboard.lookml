@@ -169,10 +169,10 @@
     model: agent_analytics
     explore: manufacturing_agent_logs
     type: looker_column
-    fields: [manufacturing_agent_logs.sum_of_prompt_token, manufacturing_agent_logs.agent,
-      manufacturing_agent_logs.sum_of_completion_token]
+    fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.sum_of_prompt_token,
+      manufacturing_agent_logs.sum_of_completion_token, manufacturing_agent_logs.sum_of_all_token]
     filters:
-    manufacturing_agent_logs.sum_of_all_token: ">0"
+      manufacturing_agent_logs.sum_of_all_token: ">0"
     sorts: [manufacturing_agent_logs.sum_of_prompt_token desc 0]
     limit: 500
     column_limit: 50
@@ -205,7 +205,7 @@
     totals_color: "#808080"
     x_axis_zoom: true
     y_axis_zoom: true
-    hidden_pivots: {}
+    hidden_fields: [manufacturing_agent_logs.sum_of_all_token]
     defaults_version: 1
     row: 11
     col: 0
