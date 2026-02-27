@@ -4,7 +4,7 @@ include: "/views/refined/adk_threat_assessment.view.lkml"
 
 # include: "/views/raw/eval_results_detailed.view.lkml"
 include: "/views/refined/eval_results_detailed.view.lkml"
-include: "/views/raw/public_cymbal_bank_transactions.view.lkml" #temporary until i can add refined
+include: "/views/derived/customer_lookup.view.lkml" #temporary until i can add refined
 # include: "/views/raw/manufacturing_agent_logs.view.lkml"
 include: "/views/derived/session_facts.view.lkml"
 include: "/views/derived/evals.view.lkml"
@@ -19,14 +19,14 @@ explore: manufacturing_agent_logs {
     sql: LEFT JOIN UNNEST(${manufacturing_agent_logs.content_parts}) as manufacturing_agent_logs__content_parts ;;
     relationship: one_to_many
   }
-  join: public_cymbal_bank_transactions {
+  join: customer_lookup {
     view_label: "Customer Information"
-    # Join on the common user_id field
+    type: left_outer
     relationship: many_to_one
-    sql_on: ${manufacturing_agent_logs.user_id} = ${public_cymbal_bank_transactions.user_id} ;;
+    sql_on: ${manufacturing_agent_logs.user_id} = ${customer_lookup.user_id} ;;
 
     # This keeps the connection "small" by only pulling in the customer_name
-    fields: [customer_name]
+    fields: [customer_lookup.customer_name, customer_lookup.user_id]
   }
 }
   # join: session_facts {
