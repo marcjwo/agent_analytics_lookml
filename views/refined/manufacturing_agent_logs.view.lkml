@@ -88,15 +88,12 @@ view: +manufacturing_agent_logs {
 
   # dimension:  {}
 
-  measure: total_investigation_cost {
+  measure: estimated_token_cost {
+    hidden: no
     type: sum
-    label: "Total Cost of Investigation"
-    description: "Hardcoded based on Gemini 3 Pro 2026 rates: $2.00/1M input, $12.00/1M output"
-    value_format: "$#0.0000"
-    sql:
-      (${prompt_token} * 0.000002) +
-      (${completion_token} * 0.000012)
-    ;;
+    label: "Estimated Token Cost"
+    sql: (${prompt_token} * 0.000002) + (${completion_token} * 0.000012);;
+    value_format: "$#,##0.00"
   }
   #####
 
