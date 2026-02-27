@@ -1,6 +1,6 @@
 # Un-hide and use this explore, or copy the joins into another explore, to get all the fully nested relationships from this view
 explore: public_cymbal_bank_transactions {
-  hidden: no
+  hidden: yes
     join: public_cymbal_bank_transactions__datastream_metadata__sort_keys {
       view_label: "Public Cymbal Bank Transactions: Datastream Metadata Sort Keys"
       sql: LEFT JOIN UNNEST(${public_cymbal_bank_transactions.datastream_metadata__sort_keys}) as public_cymbal_bank_transactions__datastream_metadata__sort_keys ;;
@@ -8,7 +8,7 @@ explore: public_cymbal_bank_transactions {
     }
 }
 view: public_cymbal_bank_transactions {
-  sql_table_name: `@{project-id}.@{bq-dataset}.public_cymbal_bank_transactions` ;;
+  sql_table_name: `@{project_id}.@{bq_dataset}.public_cymbal_bank_transactions` ;;
 
   dimension: amount {
     type: number
