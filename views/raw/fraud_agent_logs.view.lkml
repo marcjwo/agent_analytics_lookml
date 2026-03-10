@@ -1,13 +1,13 @@
 # Un-hide and use this explore, or copy the joins into another explore, to get all the fully nested relationships from this view
-# explore: manufacturing_agent_logs {
+# explore: fraud_agent_logs {
 #   hidden: yes
-#     join: manufacturing_agent_logs__content_parts {
-#       view_label: "Manufacturing Agent Logs: Content Parts"
-#       sql: LEFT JOIN UNNEST(${manufacturing_agent_logs.content_parts}) as manufacturing_agent_logs__content_parts ;;
+#     join: fraud_agent_logs__content_parts {
+#       view_label: "fraud Agent Logs: Content Parts"
+#       sql: LEFT JOIN UNNEST(${fraud_agent_logs.content_parts}) as fraud_agent_logs__content_parts ;;
 #       relationship: one_to_many
 #     }
 # }
-view: manufacturing_agent_logs {
+view: fraud_agent_logs {
   sql_table_name:`@{project_id}.@{bq_dataset}.@{agent_log_table}`  ;;
   fields_hidden_by_default: yes
 
@@ -127,13 +127,13 @@ view: manufacturing_agent_logs {
   }
 }
 
-view: manufacturing_agent_logs__content_parts {
+view: fraud_agent_logs__content_parts {
 
-  dimension: manufacturing_agent_logs__content_parts {
+  dimension: fraud_agent_logs__content_parts {
     type: string
     description: "For multi-modal events, contains a list of content parts (text, images, etc.)."
     hidden: yes
-    sql: manufacturing_agent_logs__content_parts ;;
+    sql: fraud_agent_logs__content_parts ;;
   }
   dimension: mime_type {
     hidden: yes

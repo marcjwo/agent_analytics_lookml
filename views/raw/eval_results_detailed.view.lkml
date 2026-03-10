@@ -1,5 +1,5 @@
 view: eval_results_detailed {
-  sql_table_name: `agentic-cloud-demo.manufacturing_data.eval_results_detailed` ;;
+  sql_table_name: `agentic-cloud-demo.fraud_data.eval_results_detailed` ;;
   fields_hidden_by_default: yes
 
   dimension: agent_name {

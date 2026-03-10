@@ -1,6 +1,6 @@
-include: "/views/raw/manufacturing_agent_logs.view.lkml"
+include: "/views/raw/fraud_agent_logs.view.lkml"
 
-view: +manufacturing_agent_logs {
+view: +fraud_agent_logs {
   fields_hidden_by_default: yes
 
   dimension: primary_key {
@@ -12,7 +12,7 @@ view: +manufacturing_agent_logs {
     hidden: no
     type: string
     description: "The name of the agent that generated this event. Useful for multi-agent systems."
-    sql: LOWER(${TABLE}.agent) ;;
+    sql: REPLACE(INITCAP(REPLACE(${TABLE}.agent, '_', ' ')), 'Bq ', 'BQ ') ;;
   }
 
   dimension: summary {
@@ -29,8 +29,9 @@ view: +manufacturing_agent_logs {
   dimension: tool_name {
     hidden: no
     type: string
-    sql: JSON_VALUE(${content}, '$.tool') ;;
-  }
+    sql:REPLACE(INITCAP(
+    REPLACE(JSON_VALUE(${content}, '$.tool'), '_', ' ')),'Bq ', 'BQ ') ;;
+    }
 
   dimension: text_response {
     hidden: yes

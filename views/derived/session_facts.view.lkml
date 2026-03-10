@@ -4,7 +4,7 @@
 view: session_facts {
   fields_hidden_by_default: yes
   derived_table: {
-    explore_source: manufacturing_agent_logs {
+    explore_source: fraud_agent_logs {
       column: session_id {}
       column: max_timestamp {}
       column: min_timestamp {}
