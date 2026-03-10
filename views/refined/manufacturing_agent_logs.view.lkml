@@ -1,6 +1,6 @@
-include: "/views/raw/fraud_agent_logs.view.lkml"
+include: "/views/raw/manufacturing_agent_logs.view.lkml"
 
-view: +fraud_agent_logs {
+view: +manufacturing_agent_logs {
   fields_hidden_by_default: yes
 
   dimension: primary_key {

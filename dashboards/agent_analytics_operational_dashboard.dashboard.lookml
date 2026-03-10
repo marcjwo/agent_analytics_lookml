@@ -7,7 +7,7 @@
   layout: newspaper
   elements:
   - title: ADK Fraud Detection Results
-    name: adk_fraud_detection_line_chart
+    name: adk_manufacturing_detection_line_chart
     model: agent_analytics
     explore: adk_threat_assessment
     type: looker_line
@@ -156,14 +156,14 @@
   - title: Tool Usage by Agent
     name: Tool Usage by Agent
     model: agent_analytics
-    explore: fraud_agent_logs
+    explore: manufacturing_agent_logs
     type: looker_column
-    fields: [fraud_agent_logs.agent, fraud_agent_logs.tool_name, fraud_agent_logs.count]
-    pivots: [fraud_agent_logs.tool_name]
+    fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.tool_name, manufacturing_agent_logs.count]
+    pivots: [manufacturing_agent_logs.tool_name]
     filters:
-      fraud_agent_logs.tool_name: "-NULL"
-    sorts: [fraud_agent_logs.agent, fraud_agent_logs.tool_name desc,
-      fraud_agent_logs.count desc 0]
+      manufacturing_agent_logs.tool_name: "-NULL"
+    sorts: [manufacturing_agent_logs.agent, manufacturing_agent_logs.tool_name desc,
+      manufacturing_agent_logs.count desc 0]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -224,13 +224,13 @@
   - title: Token Usage by Agent
     name: Token Usage by Agent
     model: agent_analytics
-    explore: fraud_agent_logs
+    explore: manufacturing_agent_logs
     type: looker_column
-    fields: [fraud_agent_logs.agent, fraud_agent_logs.sum_of_prompt_token,
-      fraud_agent_logs.sum_of_completion_token, fraud_agent_logs.sum_of_all_token]
+    fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.sum_of_prompt_token,
+      manufacturing_agent_logs.sum_of_completion_token, manufacturing_agent_logs.sum_of_all_token]
     filters:
-      fraud_agent_logs.sum_of_all_token: ">0"
-    sorts: [fraud_agent_logs.sum_of_prompt_token desc 0]
+      manufacturing_agent_logs.sum_of_all_token: ">0"
+    sorts: [manufacturing_agent_logs.sum_of_prompt_token desc 0]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -281,7 +281,7 @@
     totals_color: "#808080"
     x_axis_zoom: true
     y_axis_zoom: true
-    hidden_fields: [fraud_agent_logs.sum_of_all_token]
+    hidden_fields: [manufacturing_agent_logs.sum_of_all_token]
     defaults_version: 1
     row: 11
     col: 0
@@ -290,38 +290,38 @@
   - title: Tool Usage
     name: Tool Usage
     model: agent_analytics
-    explore: fraud_agent_logs
+    explore: manufacturing_agent_logs
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [fraud_agent_logs.distinct_tool_count, fraud_agent_logs.tool_count,
-      fraud_agent_logs.error_count, fraud_agent_logs.failure_rate]
+    fields: [manufacturing_agent_logs.distinct_tool_count, manufacturing_agent_logs.tool_count,
+      manufacturing_agent_logs.error_count, manufacturing_agent_logs.failure_rate]
     filters:
-      fraud_agent_logs.event_type: '"TOOL_COMPLETED","TOOL_ERROR"'
-      fraud_agent_logs.distinct_tool_count: ">0"
+      manufacturing_agent_logs.event_type: '"TOOL_COMPLETED","TOOL_ERROR"'
+      manufacturing_agent_logs.distinct_tool_count: ">0"
     limit: 500
     column_limit: 50
     hidden_fields: []
     hidden_points_if_no: []
     series_labels:
-      fraud_agent_logs.sum_of_completion_token: Completion Token (Output)
-      fraud_agent_logs.sum_of_prompt_token: Completion Token (Input)
+      manufacturing_agent_logs.sum_of_completion_token: Completion Token (Output)
+      manufacturing_agent_logs.sum_of_prompt_token: Completion Token (Input)
     show_view_names: false
     font_size_main: '10'
     orientation: auto
-    style_fraud_agent_logs.tool_count: "#34A853"
-    show_title_fraud_agent_logs.tool_count: true
-    title_placement_fraud_agent_logs.tool_count: above
-    value_format_fraud_agent_logs.tool_count: ''
-    style_fraud_agent_logs.error_count: "#DB4437"
-    show_title_fraud_agent_logs.error_count: true
-    title_placement_fraud_agent_logs.error_count: above
-    value_format_fraud_agent_logs.error_count: ''
-    show_comparison_fraud_agent_logs.error_count: false
-    style_fraud_agent_logs.failure_rate: "#FBBC05"
-    show_title_fraud_agent_logs.failure_rate: true
-    title_placement_fraud_agent_logs.failure_rate: above
-    value_format_fraud_agent_logs.failure_rate: ''
-    show_comparison_fraud_agent_logs.failure_rate: false
-    style_fraud_agent_logs.distinct_tool_count: "#4285F4"
+    style_manufacturing_agent_logs.tool_count: "#34A853"
+    show_title_manufacturing_agent_logs.tool_count: true
+    title_placement_manufacturing_agent_logs.tool_count: above
+    value_format_manufacturing_agent_logs.tool_count: ''
+    style_manufacturing_agent_logs.error_count: "#DB4437"
+    show_title_manufacturing_agent_logs.error_count: true
+    title_placement_manufacturing_agent_logs.error_count: above
+    value_format_manufacturing_agent_logs.error_count: ''
+    show_comparison_manufacturing_agent_logs.error_count: false
+    style_manufacturing_agent_logs.failure_rate: "#FBBC05"
+    show_title_manufacturing_agent_logs.failure_rate: true
+    title_placement_manufacturing_agent_logs.failure_rate: above
+    value_format_manufacturing_agent_logs.failure_rate: ''
+    show_comparison_manufacturing_agent_logs.failure_rate: false
+    style_manufacturing_agent_logs.distinct_tool_count: "#4285F4"
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_y_axis_labels: true
@@ -370,8 +370,8 @@
     x_axis_zoom: true
     y_axis_zoom: true
     series_colors:
-      fraud_agent_logs.sum_of_prompt_token: "#4285F4"
-      fraud_agent_logs.sum_of_completion_token: "#EA4335"
+      manufacturing_agent_logs.sum_of_prompt_token: "#4285F4"
+      manufacturing_agent_logs.sum_of_completion_token: "#EA4335"
     hidden_pivots: {}
     defaults_version: 0
     custom_color_enabled: true
@@ -383,9 +383,9 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    show_title_fraud_agent_logs.distinct_tool_count: true
-    title_placement_fraud_agent_logs.distinct_tool_count: above
-    value_format_fraud_agent_logs.distinct_tool_count: ''
+    show_title_manufacturing_agent_logs.distinct_tool_count: true
+    title_placement_manufacturing_agent_logs.distinct_tool_count: above
+    value_format_manufacturing_agent_logs.distinct_tool_count: ''
     listen: {}
     row: 8
     col: 0
@@ -484,12 +484,12 @@
 
   - title: Agent Usage
     name: Agent Usage
-    explore: fraud_agent_logs
+    explore: manufacturing_agent_logs
     type: looker_bar
-    fields: [fraud_agent_logs.agent, fraud_agent_logs.count]
+    fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.count]
     filters:
-      fraud_agent_logs.count: ">0"
-    sorts: [fraud_agent_logs.count desc]
+      manufacturing_agent_logs.count: ">0"
+    sorts: [manufacturing_agent_logs.count desc]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -540,13 +540,13 @@
     totals_color: "#808080"
     show_null_points: true
     interpolation: linear
-    y_axes: [{label: '', orientation: left, series: [{axisId: fraud_agent_logs.count,
-            id: assistant_agent - fraud_agent_logs.count, name: assistant_agent,
+    y_axes: [{label: '', orientation: left, series: [{axisId: manufacturing_agent_logs.count,
+            id: assistant_agent - manufacturing_agent_logs.count, name: assistant_agent,
             __FILE: agent_analytics/dashboards/agent_analytics_operational_dashboard.dashboard.lookml,
-            __LINE_NUM: 340}, {axisId: fraud_agent_logs.count, id: baseline_agent
-              - fraud_agent_logs.count, name: baseline_agent, __FILE: agent_analytics/dashboards/agent_analytics_operational_dashboard.dashboard.lookml,
-            __LINE_NUM: 342}, {axisId: fraud_agent_logs.count, id: gql_agent_3_flash
-              - fraud_agent_logs.count, name: gql_agent_3_flash, __FILE: agent_analytics/dashboards/agent_analytics_operational_dashboard.dashboard.lookml,
+            __LINE_NUM: 340}, {axisId: manufacturing_agent_logs.count, id: baseline_agent
+              - manufacturing_agent_logs.count, name: baseline_agent, __FILE: agent_analytics/dashboards/agent_analytics_operational_dashboard.dashboard.lookml,
+            __LINE_NUM: 342}, {axisId: manufacturing_agent_logs.count, id: gql_agent_3_flash
+              - manufacturing_agent_logs.count, name: gql_agent_3_flash, __FILE: agent_analytics/dashboards/agent_analytics_operational_dashboard.dashboard.lookml,
             __LINE_NUM: 343}], showLabels: false, showValues: true, unpinAxis: false,
         tickDensity: default, tickDensityCustom: 5, type: linear, __FILE: agent_analytics/dashboards/agent_analytics_operational_dashboard.dashboard.lookml,
         __LINE_NUM: 340}]
@@ -569,14 +569,14 @@
     width: 12
     height: 8
     # model: agent_analytics
-    # explore: fraud_agent_logs
+    # explore: manufacturing_agent_logs
     # type: looker_area
-    # fields: [fraud_agent_logs.count, fraud_agent_logs.timestamp_hour2,
-    #   fraud_agent_logs.agent]
+    # fields: [manufacturing_agent_logs.count, manufacturing_agent_logs.timestamp_hour2,
+    #   manufacturing_agent_logs.agent]
     # filters:
-    #   fraud_agent_logs.count: ">0"
-    # pivots: [fraud_agent_logs.agent]
-    # sorts: [fraud_agent_logs.agent, fraud_agent_logs.timestamp_hour2
+    #   manufacturing_agent_logs.count: ">0"
+    # pivots: [manufacturing_agent_logs.agent]
+    # sorts: [manufacturing_agent_logs.agent, manufacturing_agent_logs.timestamp_hour2
     #     desc]
     # limit: 500
     # column_limit: 50
@@ -607,11 +607,11 @@
     # show_totals_labels: false
     # show_silhouette: false
     # totals_color: "#808080"
-    # y_axes: [{label: '', orientation: left, series: [{axisId: fraud_agent_logs.count,
-    #         id: assistant_agent - fraud_agent_logs.count, name: assistant_agent},
-    #       {axisId: fraud_agent_logs.count, id: baseline_agent - fraud_agent_logs.count,
-    #         name: baseline_agent}, {axisId: fraud_agent_logs.count, id: gql_agent_3_flash
-    #           - fraud_agent_logs.count, name: gql_agent_3_flash}], showLabels: false,
+    # y_axes: [{label: '', orientation: left, series: [{axisId: manufacturing_agent_logs.count,
+    #         id: assistant_agent - manufacturing_agent_logs.count, name: assistant_agent},
+    #       {axisId: manufacturing_agent_logs.count, id: baseline_agent - manufacturing_agent_logs.count,
+    #         name: baseline_agent}, {axisId: manufacturing_agent_logs.count, id: gql_agent_3_flash
+    #           - manufacturing_agent_logs.count, name: gql_agent_3_flash}], showLabels: false,
     #     showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
     #     type: linear}]
     # x_axis_zoom: true
@@ -629,14 +629,14 @@
     # #     },
     # #     "series": [{
     #         "color": "#EA4335",
-    #         "id": "baseline_agent - fraud_agent_logs.count",
+    #         "id": "baseline_agent - manufacturing_agent_logs.count",
     #         "name": "baseline_agent",
     #         "type": "area",
     #         "visible": true
     #       },
     #       {
     #         "color": "#4285F4",
-    #         "id": "knowledge_agent - fraud_agent_logs.count",
+    #         "id": "knowledge_agent - manufacturing_agent_logs.count",
     #         "name": "knowledge_agent",
     #         "type": "area",
     #         "visible": true
@@ -657,12 +657,12 @@
   # - title: 'Session Analysis: Duration'
   #   name: 'Session Analysis: Duration'
   #   model: agent_analytics
-  #   explore: fraud_agent_logs
+  #   explore: manufacturing_agent_logs
   #   type: looker_column
-  #   fields: [session_facts.duration_bin, fraud_agent_logs.count, session_facts.average_user_turns,
-  #     fraud_agent_logs.agent]
-  #   pivots: [fraud_agent_logs.agent]
-  #   sorts: [fraud_agent_logs.agent]
+  #   fields: [session_facts.duration_bin, manufacturing_agent_logs.count, session_facts.average_user_turns,
+  #     manufacturing_agent_logs.agent]
+  #   pivots: [manufacturing_agent_logs.agent]
+  #   sorts: [manufacturing_agent_logs.agent]
   #   limit: 500
   #   column_limit: 50
   #   x_axis_gridlines: false
@@ -692,8 +692,8 @@
   #   show_totals_labels: false
   #   show_silhouette: false
   #   totals_color: "#808080"
-  #   y_axes: [{label: '', orientation: left, series: [{axisId: fraud_agent_logs.count,
-  #           id: fraud_agent_logs.count, name: Total Sessions}], showLabels: false,
+  #   y_axes: [{label: '', orientation: left, series: [{axisId: manufacturing_agent_logs.count,
+  #           id: manufacturing_agent_logs.count, name: Total Sessions}], showLabels: false,
   #       showValues: true, valueFormat: '#,##0.0,"k"', unpinAxis: false, tickDensity: default,
   #       tickDensityCustom: 5, type: linear}]
   #   x_axis_zoom: true
@@ -701,10 +701,10 @@
   #   series_types:
   #     session_facts.average_user_turns: line
   #   series_colors:
-  #     fraud_agent_logs.count: "#4285F4"
+  #     manufacturing_agent_logs.count: "#4285F4"
   #     session_facts.average_user_turns: "#FBBC04"
   #   series_labels:
-  #     fraud_agent_logs.count: Total Sessions
+  #     manufacturing_agent_logs.count: Total Sessions
   #     session_facts.average_user_turns: Avg User Turns
   #   advanced_vis_config: |-
   #     {
@@ -731,11 +731,11 @@
   # - title: Agent Latency
   #   name: Agent Latency
   #   model: agent_analytics
-  #   explore: fraud_agent_logs
+  #   explore: manufacturing_agent_logs
   #   type: looker_column
-  #   fields: [fraud_agent_logs.agent, fraud_agent_logs.average_latency,
+  #   fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.average_latency,
   #     evals.avg_accuracy]
-  #   sorts: [fraud_agent_logs.agent]
+  #   sorts: [manufacturing_agent_logs.agent]
   #   limit: 500
   #   column_limit: 50
   #   x_axis_gridlines: false
@@ -765,19 +765,19 @@
   #   show_totals_labels: false
   #   show_silhouette: false
   #   totals_color: "#808080"
-  #   y_axes: [{label: Average Latency in seconds, orientation: left, series: [{axisId: fraud_agent_logs.average_latency,
-  #           id: fraud_agent_logs.average_latency, name: Avg Latency (ms)}],
+  #   y_axes: [{label: Average Latency in seconds, orientation: left, series: [{axisId: manufacturing_agent_logs.average_latency,
+  #           id: manufacturing_agent_logs.average_latency, name: Avg Latency (ms)}],
   #       showLabels: true, showValues: true, valueFormat: "#,", unpinAxis: false, tickDensity: default,
   #       tickDensityCustom: 5, type: linear}]
   #   x_axis_zoom: true
   #   y_axis_zoom: true
   #   series_colors:
   #     evals.avg_accuracy: "#4285F4"
-  #     fraud_agent_logs.average_latency: "#4285F4"
+  #     manufacturing_agent_logs.average_latency: "#4285F4"
   #   series_labels:
-  #     fraud_agent_logs.average_latency: Avg Latency (ms)
+  #     manufacturing_agent_logs.average_latency: Avg Latency (ms)
   #   series_point_styles:
-  #     fraud_agent_logs.average_latency: auto
+  #     manufacturing_agent_logs.average_latency: auto
   #   advanced_vis_config: |-
   #     {
   #       chart: {},
@@ -810,11 +810,11 @@
   # - title: Agent Accuracy
   #   name: Agent Accuracy
   #   model: agent_analytics
-  #   explore: fraud_agent_logs
+  #   explore: manufacturing_agent_logs
   #   type: looker_column
-  #   fields: [fraud_agent_logs.agent, fraud_agent_logs.average_latency,
+  #   fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.average_latency,
   #     evals.avg_accuracy]
-  #   sorts: [fraud_agent_logs.agent]
+  #   sorts: [manufacturing_agent_logs.agent]
   #   limit: 500
   #   column_limit: 50
   #   x_axis_gridlines: false
@@ -847,21 +847,21 @@
   #   y_axes: [{label: '', orientation: left, series: [{axisId: evals.avg_accuracy,
   #           id: evals.avg_accuracy, name: Avg Accuracy}], showLabels: true, showValues: true,
   #       unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
-  #     {label: !!null '', orientation: right, series: [{axisId: fraud_agent_logs.average_latency,
-  #           id: fraud_agent_logs.average_latency, name: Average latency in
+  #     {label: !!null '', orientation: right, series: [{axisId: manufacturing_agent_logs.average_latency,
+  #           id: manufacturing_agent_logs.average_latency, name: Average latency in
   #             ms}], showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
   #       tickDensityCustom: 5, type: linear}]
   #   x_axis_zoom: true
   #   y_axis_zoom: true
   #   series_types:
-  #     fraud_agent_logs.average_latency: scatter
+  #     manufacturing_agent_logs.average_latency: scatter
   #   series_colors:
   #     evals.avg_accuracy: "#4285F4"
-  #     fraud_agent_logs.average_latency: "#EA4335"
+  #     manufacturing_agent_logs.average_latency: "#EA4335"
   #   series_labels:
-  #     fraud_agent_logs.average_latency: Avg Latency (ms)
+  #     manufacturing_agent_logs.average_latency: Avg Latency (ms)
   #   series_point_styles:
-  #     fraud_agent_logs.average_latency: auto
+  #     manufacturing_agent_logs.average_latency: auto
   #   advanced_vis_config: |-
   #     {
   #       chart: {},
@@ -879,7 +879,7 @@
   #       }]
   #     }
   #   defaults_version: 1
-  #   hidden_fields: [fraud_agent_logs.average_latency]
+  #   hidden_fields: [manufacturing_agent_logs.average_latency]
   #   listen: {}
   #   row: 0
   #   col: 12

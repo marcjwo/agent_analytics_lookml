@@ -5,7 +5,7 @@ connection: "default_bigquery_connection"
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 include: "/explores/agent_logs.explore.lkml"
 include: "/views/derived/session_facts.view.lkml"
-include: "/views/refined/fraud_agent_logs.view.lkml"
+include: "/views/refined/manufacturing_agent_logs.view.lkml"
 include: "/explores/adk_threat_assessment.explore.lkml"
 include: "/dashboards/agent_analytics_operational_dashboard.dashboard.lookml"
 
