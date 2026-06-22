@@ -8,7 +8,7 @@
   elements:
   - title: Tool Usage by Agent
     name: Tool Usage by Agent
-    model: agent_analytics
+    model: bq_agent_analytics
     explore: manufacturing_agent_logs
     type: looker_column
     fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.count, manufacturing_agent_logs.tool_name]
@@ -132,7 +132,7 @@
     height: 7
   - title: Token Usage by Agent
     name: Token Usage by Agent
-    model: agent_analytics
+    model: bq_agent_analytics
     explore: manufacturing_agent_logs
     type: looker_column
     fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.sum_of_prompt_token,
@@ -260,7 +260,7 @@
     height: 7
   - title: Tool Usage
     name: Tool Usage
-    model: agent_analytics
+    model: bq_agent_analytics
     explore: manufacturing_agent_logs
     type: marketplace_viz_multiple_value::multiple_value-marketplace
     fields: [manufacturing_agent_logs.distinct_tool_count, manufacturing_agent_logs.tool_count,
@@ -344,7 +344,7 @@
     height: 3
   - title: Agent Usage
     name: Agent Usage
-    model: agent_analytics
+    model: bq_agent_analytics
     explore: manufacturing_agent_logs
     type: looker_area
     fields: [manufacturing_agent_logs.count, manufacturing_agent_logs.timestamp_hour2,
@@ -446,7 +446,7 @@
     height: 5
   - title: 'Session Analysis: Duration'
     name: 'Session Analysis: Duration'
-    model: agent_analytics
+    model: bq_agent_analytics
     explore: manufacturing_agent_logs
     type: looker_column
     fields: [session_facts.duration_bin, manufacturing_agent_logs.count, session_facts.average_user_turns,
@@ -520,7 +520,7 @@
     height: 5
   - title: Agent Latency
     name: Agent Latency
-    model: agent_analytics
+    model: bq_agent_analytics
     explore: manufacturing_agent_logs
     type: looker_column
     fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.average_latency,
@@ -599,7 +599,7 @@
     height: 7
   - title: Agent Accuracy
     name: Agent Accuracy
-    model: agent_analytics
+    model: bq_agent_analytics
     explore: manufacturing_agent_logs
     type: looker_column
     fields: [manufacturing_agent_logs.agent, manufacturing_agent_logs.average_latency,
